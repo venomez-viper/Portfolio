@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
+
 /* ===== CSS RESET & BASE ===== */
 * {
     margin: 0;
@@ -30,6 +32,7 @@
 
     /* Typography */
     --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "Inter", system-ui, sans-serif;
+    --font-huge: 'Outfit', sans-serif;
     --font-size-xs: clamp(0.75rem, 1.5vw, 0.875rem);
     --font-size-sm: clamp(0.875rem, 1.8vw, 1rem);
     --font-size-base: clamp(1rem, 2vw, 1.125rem);
@@ -125,9 +128,10 @@ body {
 }
 
 .nav-logo {
+    font-family: var(--font-huge);
     font-size: var(--font-size-lg);
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-weight: 800;
+    letter-spacing: -0.04em;
 }
 
 .nav-links {
@@ -236,10 +240,11 @@ body {
 }
 
 .hero-headline {
+    font-family: var(--font-huge);
     font-size: var(--font-size-hero);
-    font-weight: 700;
+    font-weight: 800;
     line-height: 1.1;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
 }
@@ -585,9 +590,10 @@ body {
 }
 
 .section-title {
+    font-family: var(--font-huge);
     font-size: var(--font-size-2xl);
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-weight: 800;
+    letter-spacing: -0.04em;
     margin-bottom: var(--spacing-xl);
     text-align: center;
 }

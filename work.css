@@ -12,6 +12,7 @@
     --accent-glow: rgba(100, 180, 255, 0.3);
 
     --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", sans-serif;
+    --font-huge: 'Outfit', sans-serif;
     --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
     --blur-amount: 25px;
 }
@@ -71,9 +72,10 @@ body {
 }
 
 .nav-logo {
+    font-family: var(--font-huge);
     font-weight: 800;
     font-size: 1.25rem;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     background: linear-gradient(135deg, #fff 0%, var(--accent-blue) 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -125,9 +127,10 @@ body {
 }
 
 .hero-headline {
+    font-family: var(--font-huge);
     font-size: clamp(3rem, 8vw, 4.5rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
+    font-weight: 900;
+    letter-spacing: -0.05em;
     margin-bottom: 1.5rem;
     line-height: 1;
     background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);

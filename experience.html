@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Akash</title>
+    <meta name="description" content="My professional journey and education.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific timeline styles inheriting from glass system */
+        .timeline-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+            position: relative;
+        }
+
+        /* Vertical Line */
+        .timeline-line {
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-item {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .timeline-item:nth-child(odd) {
+                flex-direction: row-reverse;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content .role-tags {
+                justify-content: flex-end;
+            }
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            position: absolute;
+            left: calc(2rem - 7px);
+            top: 0;
+            box-shadow: 0 0 10px var(--accent-blue);
+            z-index: 2;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-dot {
+                left: 50%;
+                transform: translateX(-50%);
+                top: 50%;
+                margin-top: -8px;
+            }
+        }
+
+        .timeline-date {
+            font-family: var(--font-system);
+            color: var(--text-tertiary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            padding-left: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-date {
+                width: 50%;
+                padding: 0 3rem;
+                margin-bottom: 0;
+                text-align: right;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-date {
+                text-align: right;
+            }
+
+            .timeline-item:nth-child(even) .timeline-date {
+                text-align: left;
+            }
+        }
+
+        .timeline-content {
+            background: var(--glass-white);
+            backdrop-filter: blur(var(--blur-amount));
+            -webkit-backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-left: 4rem;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            background: var(--glass-white-hover);
+            border-color: var(--text-secondary);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-content {
+                width: calc(50% - 3rem);
+                margin-left: 0;
+            }
+        }
+
+        .role-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .company-name {
+            font-size: 1rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .role-desc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .role-desc li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .role-desc li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed-background"></div>
+
+    <nav class="nav-glass" id="nav">
+        <div class="nav-content">
+            <div class="nav-logo">Akash</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="work.html">Work</a>
+                <a href="#" class="active"
+                    style="color:var(--text-primary); border-bottom: 2px solid var(--accent-blue);">Experience</a>
+                <a href="Akash_Anipakalu_Giridhar_Resume.pdf" target="_blank">Resume</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero" style="min-height: 40vh; justify-content: flex-end; padding-bottom: 0;">
+            <div class="hero-glass-panel" style="text-align:center; max-width:1100px;">
+                <h1 class="hero-headline" style="font-size: 3rem;">Journey & Education</h1>
+                <p class="hero-subtext" style="margin: 0 auto;">Calculating value at the intersection of Data, Product,
+                    and Strategy.</p>
+
+                <div class="hero-cta" style="justify-content:center; margin-top: 2rem; width: 100%;">
+                    <a href="Akash_Anipakalu_Giridhar_Resume.pdf" class="btn-secondary" target="_blank">Download
+                        Resume</a>
+                    <a href="https://github.com/venomez-viper/breezeml" class="btn-secondary" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience-timeline">
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <!-- Item 1: LogiNext Solutions -->
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Oct 2023 - Apr 2024</div>
+                    <div class="timeline-content">
+                        <h3 class="role-title">Solutions Engineer (Pre-Sales)</h3>
+                        <div class="company-name">LogiNext Solutions • Mumbai</div>
+                        <div class="role-desc">
+                            <ul>
+                                <li>Delivered 40+ demos to enterprise buyers evaluating cloud-based logistics and
+                                    workflow orchestration solutions.</li>
+                                <li>Conducted technical discovery to translate customer requirements into solution
+                                    architectures.</li>
+                                <li>Supported 10+ PoCs with product and engineering teams to validate technical fit.
+                                </li>
+                                <li>Communicated value drivers and ROI considerations to business stakeholders.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Zoho Corporation -->
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Dec 2020 - Apr 2023</div>
+                    <div class="timeline-content">
+                        <h3 class="role-title">Solutions Consultant (BI Pre-Sales)</h3>
+                        <div class="company-name">Zoho Corporation • Chennai</div>
+                        <div class="role-desc">
+                            <ul>
+                                <li>Conducted 200+ technical product walkthroughs for BI on enterprise data across
+                                    finance, HR, and operations.</li>
+                                <li>Performed requirements discovery and translated 100+ customer needs into dashboards
+                                    and KPIs.</li>
+                                <li>Built 50+ solution artifacts demonstrating cloud data integration and analytical use
+                                    cases.</li>
+                                <li>Collaborated with sales and engineering to address adoption blockers.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: CHS Payroll -->
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Mar 2024 - Aug 2024</div>
+                    <div class="timeline-content">
+                        <h3 class="role-title">Business Analyst Intern</h3>
+                        <div class="company-name">CHS Payroll • Remote (NY)</div>
+                        <div class="role-desc">
+                            <ul>
+                                <li>Analyzed payroll, scheduling, and operations data to improve accuracy and system
+                                    efficiency.</li>
+                                <li>Built reporting assets to support decision-making and workflow improvements across
+                                    payroll operations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: DePaul University (Work) -->
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Dec 2024 - Present</div>
+                    <div class="timeline-content">
+                        <h3 class="role-title">Student Assistant (Analytics & Ops)</h3>
+                        <div class="company-name">DePaul University • Chicago</div>
+                        <div class="role-desc">
+                            <ul>
+                                <li>Built dashboards using Oracle Cloud ERP data to improve visibility into AP
+                                    workflows.</li>
+                                <li>Supported invoice validation, approvals, and ERP workflow operations.</li>
+                                <li>Learned data structures and system configurations in ERP environments.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Education (Masters) -->
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Graduation: June 2026</div>
+                    <div class="timeline-content">
+                        <h3 class="role-title">M.S. Business Analytics</h3>
+                        <div class="company-name">DePaul University • GPA: 3.93</div>
+                        <div class="role-desc">
+                            <ul>
+                                <li>Dean’s Scholarship ($7,500) & Student Ambassador Scholarship ($4,500).</li>
+                                <li>Coursework: Predictive Analytics, Data Mining, Financial Analytics, SQL.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Education (Bachelors) -->
+                <div class="timeline-item reveal-element">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-content">
+                        <h3 class="role-title">Bachelor of Business Administration</h3>
+                        <div class="company-name">Indira Gandhi National Tribal University • GPA: 3.9</div>
+                        <div class="role-desc">
+                            <ul>
+                                <li>Foundational business strategy and operations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="section-container">
+                <h2 class="section-title reveal-element">Contact Me</h2>
+
+                <div class="contact-content reveal-element">
+                    <div class="contact-glass">
+                        <div class="contact-links" style="flex-direction: column; align-items: center; gap: 1.5rem;">
+                            <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+                                <a href="https://github.com/venomez-viper/breezeml" class="contact-link"
+                                    target="_blank">GitHub</a>
+                                <a href="https://linkedin.com/in/akash-anipakalu-giridhar-1089011b1"
+                                    class="contact-link" target="_blank">LinkedIn</a>
+                                <a href="#contact" class="contact-link"
+                                    onclick="document.getElementById('emailDisplay').style.display='block'; return false;">Email</a>
+                            </div>
+                            <div id="emailDisplay"
+                                style="display:none; margin-top: 1rem; color: var(--text-primary); font-weight: 500;">
+                                akashagakash@gamil.com
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p style="margin-bottom: 0.5rem;">Built with care. Designed for clarity.</p>
+                <p>Powered by curiosity and caffeine.</p>
+                <br>
+                <p>© 2026 Akash Anipakalu Giridhar. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

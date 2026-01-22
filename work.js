@@ -595,7 +595,7 @@ window.openDrawer = function (id) {
 
     // Populate Content
     const tagsHTML = project.tags.map(t => `<span class="badge">${t}</span>`).join('');
-    const toolsHTML = project.tools.map(t => `<span class="chip" style="font-size:0.8rem; padding:0.25rem 0.75rem;">${t}</span>`).join('');
+    const toolsHTML = project.tools.map(t => `<span class="chip tool-chip">${t}</span>`).join('');
 
     // Buttons
     let btnsHTML = '';
@@ -614,10 +614,10 @@ window.openDrawer = function (id) {
 
     drawerContent.innerHTML = `
         <div class="drawer-header">
-            <div class="drawer-meta-row" style="margin-bottom:0.5rem;">
-                <span style="color:var(--accent-color); font-weight:600; font-size:0.9rem;">${project.category}</span>
-                <span style="color:rgba(255,255,255,0.4); font-size:0.9rem;">• ${project.date}</span>
-                <span style="color:rgba(255,255,255,0.4); font-size:0.9rem;">• Role: ${project.role}</span>
+            <div class="drawer-meta-row">
+                <span class="drawer-category">${project.category}</span>
+                <span class="drawer-date">• ${project.date}</span>
+                <span class="drawer-role">• Role: ${project.role}</span>
             </div>
             <h2 class="drawer-title">${project.title}</h2>
             <p class="drawer-subtitle">${project.summary}</p>
@@ -627,27 +627,31 @@ window.openDrawer = function (id) {
 
         <div class="drawer-section">
             <h4>Outcome</h4>
-            <p style="color:var(--glass-text-primary); font-size:1.1rem; border-left: 2px solid var(--accent-color); padding-left:1rem;">${project.outcome}</p>
+            <div class="drawer-outcome-card">
+                <p>${project.outcome}</p>
+            </div>
         </div>
 
         <div class="drawer-section">
             <h4>The Problem</h4>
-            <p>${project.problem}</p>
+            <div class="drawer-text-panel">
+                <p>${project.problem}</p>
+            </div>
         </div>
 
         <div class="drawer-section">
             <h4>Approach</h4>
-            <ul>${approachList}</ul>
+            <ul class="drawer-list">${approachList}</ul>
         </div>
         
         <div class="drawer-section">
             <h4>Results</h4>
-            <ul>${resultsList}</ul>
+            <ul class="drawer-list">${resultsList}</ul>
         </div>
         
         <div class="drawer-section">
             <h4>Recommendations</h4>
-            <ul>${recsList}</ul>
+            <ul class="drawer-list">${recsList}</ul>
         </div>
 
         <div class="drawer-section">

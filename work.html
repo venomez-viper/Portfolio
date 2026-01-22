@@ -22,8 +22,7 @@
             <div class="nav-logo">Akash</div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="#" class="active"
-                    style="color:var(--text-primary); border-bottom: 2px solid var(--accent-blue);">Work</a>
+                <a href="#" class="active">Work</a>
                 <a href="experience.html">Experience</a>
                 <a href="Akash_Anipakalu_Giridhar_Resume.pdf" target="_blank">Resume</a>
                 <a href="#contact">Contact</a>
@@ -32,72 +31,63 @@
     </nav>
 
     <main>
-        <!-- 2) Hero Section (Modified for Work) -->
-        <section class="hero" style="min-height: 60vh;">
-            <div class="hero-glass-panel" style="text-align:center;">
+        <section class="hero">
+            <div class="hero-glass-panel">
                 <h1 class="hero-headline">Selected Work</h1>
-                <p class="hero-subtext" style="margin: 0 auto; max-width: 600px;">
+                <p class="hero-subtext">
                     A curated database of projects across ML, analytics, dashboards, finance, and decision science.
                 </p>
-                <p
-                    style="font-size: var(--font-size-sm); color: var(--text-tertiary); margin-top: 1rem; margin-bottom: 2rem;">
-                    Built for clarity. Designed for real conversations.
-                </p>
-
-                <div class="hero-cta" style="justify-content:center;">
+                <div class="hero-cta">
                     <button class="btn-primary" id="browseBtn">Browse Library</button>
                     <a href="Akash_Anipakalu_Giridhar_Resume.pdf" class="btn-secondary" target="_blank">Download
                         Resume</a>
                     <a href="https://github.com/venomez-viper/breezeml" class="btn-secondary" target="_blank">GitHub</a>
                 </div>
 
-                <p style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 2rem;">Last updated: January 20,
-                    2026</p>
+                <p class="last-updated">Last updated: January 20, 2026</p>
             </div>
         </section>
 
         <!-- 3) Controls Row -->
         <section class="controls-section" id="libraryControls">
-            <div class="controls-glass">
-                <div class="search-wrapper">
-                    <input type="text" id="searchInput" placeholder="Search projects, tools, or outcomes…"
-                        aria-label="Search projects">
-                </div>
-
-                <div class="controls-row-2">
-                    <div class="filter-chips" id="filterContainer">
-                        <button class="chip active" data-filter="All">All</button>
-                        <button class="chip" data-filter="Machine Learning">Machine Learning</button>
-                        <button class="chip" data-filter="Dashboards">Dashboards</button>
-                        <button class="chip" data-filter="Finance & Valuation">Finance & Valuation</button>
-                        <button class="chip" data-filter="Optimization">Optimization</button>
-                        <button class="chip" data-filter="Project Management">Project Management</button>
-                        <button class="chip" data-filter="Presentations">Presentations</button>
-                    </div>
-                </div>
-
-                <div class="controls-row-3"
-                    style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--glass-border); padding-top:1rem;">
-                    <div class="sort-wrapper" style="display:flex; gap:1rem; align-items:center;">
-                        <label for="sortSelect" style="color:var(--text-secondary); font-size:0.9rem;">Sort by:</label>
-                        <select id="sortSelect" style="background:transparent; border:none; color:var(--text-primary);">
-                            <option value="recent">Most recent</option>
-                            <option value="impact">Most impactful</option>
-                            <option value="technical">Most technical</option>
-                            <option value="visual">Most visual</option>
-                        </select>
+            <div class="glass-panel">
+                <div class="controls-container">
+                    <div class="search-wrapper">
+                        <input type="text" id="searchInput" placeholder="Search projects, tools, or outcomes…"
+                            aria-label="Search projects">
                     </div>
 
-                    <div class="view-toggle" style="display:flex; gap:0.5rem;">
-                        <button class="chip active" id="viewCarousel" style="padding:0.4rem;"
-                            aria-label="Carousel">carousel</button>
-                        <button class="chip" id="viewGrid" style="padding:0.4rem;" aria-label="Grid">grid</button>
+                    <div class="controls-row-2">
+                        <div class="filter-chips" id="filterContainer">
+                            <button class="chip active" data-filter="All">All</button>
+                            <button class="chip" data-filter="Machine Learning">Machine Learning</button>
+                            <button class="chip" data-filter="Dashboards">Dashboards</button>
+                            <button class="chip" data-filter="Finance & Valuation">Finance & Valuation</button>
+                            <button class="chip" data-filter="Optimization">Optimization</button>
+                            <button class="chip" data-filter="Project Management">Project Management</button>
+                            <button class="chip" data-filter="Presentations">Presentations</button>
+                        </div>
                     </div>
 
-                    <button id="clearFilters"
-                        style="background:transparent; border:none; color:var(--accent-blue); cursor:pointer; display:none;">Clear</button>
+                    <div class="controls-row-3">
+                        <div class="sort-wrapper">
+                            <label for="sortSelect">Sort by:</label>
+                            <select id="sortSelect">
+                                <option value="recent">Most recent</option>
+                                <option value="impact">Most impactful</option>
+                                <option value="technical">Most technical</option>
+                                <option value="visual">Most visual</option>
+                            </select>
+                        </div>
+
+                        <div class="view-toggle">
+                            <button class="toggle-btn active" id="viewCarousel" aria-label="Carousel">Carousel</button>
+                            <button class="toggle-btn" id="viewGrid" aria-label="Grid">Grid</button>
+                        </div>
+
+                        <button id="clearFilters" class="clear-filters hidden">Clear</button>
+                    </div>
                 </div>
-            </div>
         </section>
 
         <!-- 4) Featured Carousel -->

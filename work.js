@@ -357,11 +357,9 @@ function getFilteredAndSortedProjects() {
     });
 }
 
-function createCardHTML(project, isCarousel) {
-    // Generate tags HTML (max 3)
+function createCardHTML(project) {
     const tagsHTML = project.tags.slice(0, 3).map(t => `<span class="tag">${t}</span>`).join('');
 
-    // Artifact badges
     let artifactLabel = '';
     if (project.artifacts.hasDeck) artifactLabel = 'Deck';
     else if (project.artifacts.hasDashboard) artifactLabel = 'Dashboard';
@@ -369,25 +367,25 @@ function createCardHTML(project, isCarousel) {
     else artifactLabel = 'Case Study';
 
     return `
-        <article class="project-card revealed" data-id="${project.id}" style="cursor:pointer; opacity:1; filter:none; transform:none;">
-            <div class="card-glass" style="height: 100%; min-height: 400px; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem;">
+        <article class="project-card" data-id="${project.id}">
+            <div class="card-glass">
                 <div class="card-hotspot"></div>
                 
-                <div style="flex: 1;">
-                    <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 1rem;">
-                        <span style="font-size:0.75rem; text-transform:uppercase; color:var(--accent-blue); letter-spacing:0.05em; font-weight: 600;">${artifactLabel}</span>
-                        <span style="font-size:0.75rem; color:var(--text-tertiary);">${project.date}</span>
+                <div class="card-content-top">
+                    <div class="card-header">
+                        <span class="artifact-label">${artifactLabel}</span>
+                        <span class="card-date">${project.date}</span>
                     </div>
                     
-                    <h3 class="card-title" style="margin-bottom: 0.75rem; font-size: 1.5rem; line-height: 1.2;">${project.title}</h3>
-                    <p class="card-description" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; line-height: 1.6;">${project.summary}</p>
+                    <h3 class="card-title">${project.title}</h3>
+                    <p class="card-description">${project.summary}</p>
                     
-                    <div class="card-tags" style="margin-bottom: 1.5rem;">${tagsHTML}</div>
+                    <div class="card-tags">${tagsHTML}</div>
                 </div>
 
-                <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                     <p style="font-size:0.85rem; color:var(--text-primary); margin-bottom: 1rem;"><strong>Outcome:</strong> ${project.outcome.replace('Outcome:', '')}</p>
-                     <button class="btn-secondary" style="padding:0.6rem 1rem; font-size:0.9rem; width:100%;">Open Project</button>
+                <div class="card-content-bottom">
+                     <p class="card-outcome"><strong>Outcome:</strong> ${project.outcome.replace('Outcome:', '')}</p>
+                     <button class="btn-primary-small">Open Project</button>
                 </div>
             </div>
         </article>
@@ -415,8 +413,41 @@ function renderProjects() {
         if (projectGrid) projectGrid.innerHTML = emptyMsg;
     }
 
-    // Update progress bar helper
+    // Apply reveal animations
+    setTimeout(() => {
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach((card, i) => {
+            setTimeout(() => card.classList.add('revealed'), i * 50);
+        });
+    }, 100);
+
+    // Re-bind mouse tracking for hotspots
+    bindCardHotspots();
     updateProgressBar();
+}
+
+function bindCardHotspots() {
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        const cardGlass = card.querySelector('.card-glass');
+        const hotspot = card.querySelector('.card-hotspot');
+
+        if (!cardGlass || !hotspot) return;
+
+        cardGlass.addEventListener('mousemove', (e) => {
+            const rect = cardGlass.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            hotspot.style.opacity = '1';
+            hotspot.style.left = `${x}px`;
+            hotspot.style.top = `${y}px`;
+        });
+
+        cardGlass.addEventListener('mouseleave', () => {
+            hotspot.style.opacity = '0';
+        });
+    });
 }
 
 /* Event Listeners */
@@ -496,6 +527,19 @@ function setupEventListeners() {
             if (e.target === drawerOverlay) closeDrawer();
         });
     }
+
+    // Glass Panel Mouse Tracking (Hero & Controls)
+    const glassPanels = document.querySelectorAll('.hero-glass-panel, .glass-panel');
+    glassPanels.forEach(panel => {
+        panel.addEventListener('mousemove', (e) => {
+            const rect = panel.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            panel.style.setProperty('--mouse-x', `${x}%`);
+            panel.style.setProperty('--mouse-y', `${y}%`);
+        });
+    });
+
     // ESC key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeDrawer();

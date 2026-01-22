@@ -13,9 +13,9 @@
 
 :root {
     /* Colors - Frosted Glass */
-    --glass-white: rgba(255, 255, 255, 0.15);
-    --glass-white-hover: rgba(255, 255, 255, 0.22);
-    --glass-border: rgba(255, 255, 255, 0.25);
+    --glass-white: rgba(255, 255, 255, 0.08);
+    --glass-white-hover: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.12);
     --accent-blue: rgba(100, 180, 255, 0.9);
     --accent-blue-subtle: rgba(100, 180, 255, 0.2);
     --text-primary: rgba(255, 255, 255, 0.98);

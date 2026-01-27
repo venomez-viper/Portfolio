@@ -74,7 +74,7 @@ body {
 .nav-logo {
     font-family: var(--font-huge);
     font-weight: 800;
-    font-size: 1.25rem;
+    font-size: var(--font-size-lg);
     letter-spacing: -0.04em;
     background: linear-gradient(135deg, #fff 0%, var(--accent-blue) 100%);
     -webkit-background-clip: text;

@@ -44,9 +44,8 @@
     /* Effects */
     --blur-amount: 20px;
     --blur-amount-strong: 30px;
-    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-ios: cubic-bezier(0.25, 0.1, 0.25, 1);
-    --transition-duration: 0.4s;
+    --transition-duration: 0.5s;
+    --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 
     /* Scroll-linked vars (JS updates for Apple scroll magic) */
     --handoff: 0;
@@ -132,6 +131,10 @@ body {
     font-size: var(--font-size-lg);
     font-weight: 800;
     letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-blue) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .nav-links {

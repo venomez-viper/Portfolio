@@ -72,7 +72,8 @@ function fixEmailTypo() {
  */
 function ensureSafeResumeLinks() {
     document.querySelectorAll('a').forEach(link => {
-        if (link.href.toLowerCase().includes('resume.pdf')) {
+        const href = (link.getAttribute('href') || '').toLowerCase();
+        if (href.includes('resume')) {
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener noreferrer');
         }

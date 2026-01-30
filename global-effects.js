@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSpotlight();
     initSecurity();
     initEmailProtection();
+    initEventTracking();
 });
 
 /**
@@ -60,6 +61,54 @@ function initEmailProtection() {
             // Optional: copy to clipboard or open mailto
             // window.location.href = `mailto:${fullEmail}`;
         });
+    });
+}
+
+/**
+ * Event Tracking: Captures high-intent recruiter actions
+ */
+function initEventTracking() {
+    document.querySelectorAll('a').forEach(link => {
+        const href = (link.getAttribute('href') || '').toLowerCase();
+
+        // Track Resume Downloads
+        if (href.includes('resume.pdf')) {
+            link.addEventListener('click', () => {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'resume_download', {
+                        'event_category': 'engagement',
+                        'event_label': 'Resume PDF',
+                        'transport_type': 'beacon'
+                    });
+                }
+            });
+        }
+
+        // Track LinkedIn Clicks
+        if (href.includes('linkedin.com')) {
+            link.addEventListener('click', () => {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'social_click', {
+                        'event_category': 'engagement',
+                        'event_label': 'LinkedIn',
+                        'transport_type': 'beacon'
+                    });
+                }
+            });
+        }
+
+        // Track GitHub Clicks
+        if (href.includes('github.com')) {
+            link.addEventListener('click', () => {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'social_click', {
+                        'event_category': 'engagement',
+                        'event_label': 'GitHub',
+                        'transport_type': 'beacon'
+                    });
+                }
+            });
+        }
     });
 }
 

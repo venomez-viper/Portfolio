@@ -8,6 +8,12 @@
     <meta name="description"
         content="Technical project portfolio of Akash Anipakalu Giridhar. Explore case studies in ML, Analytics, and Solutions Engineering.">
     <link rel="icon" type="image/jpeg" href="favicon.jpg">
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <link rel="canonical" href="https://www.akashanipakalugiridhar.com/work.html" />
 
     <!-- Open Graph -->
@@ -269,12 +275,11 @@
                                     target="_blank">GitHub</a>
                                 <a href="https://linkedin.com/in/akash-anipakalu-giridhar-1089011b1"
                                     class="contact-link" target="_blank">LinkedIn</a>
-                                <a href="#contact" class="contact-link"
-                                    onclick="document.getElementById('emailDisplay').style.display='block'; return false;">Email</a>
+                                <a href="#contact" class="contact-link" data-email-protect>Email</a>
                             </div>
                             <div id="emailDisplay"
                                 style="display:none; margin-top: 1rem; color: var(--text-primary); font-weight: 500;">
-                                akashagakash@gmail.com
+                                <!-- Email will be injected here on click for security -->
                             </div>
                         </div>
                     </div>

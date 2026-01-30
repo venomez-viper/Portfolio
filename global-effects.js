@@ -1,12 +1,67 @@
 /**
- * Global Effects: Cursor Tracking & Utils
+ * Global Effects: Cursor Tracking, Security & Utils
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     initSpotlight();
-    fixEmailTypo();
-    ensureSafeResumeLinks();
+    initSecurity();
+    initEmailProtection();
 });
+
+/**
+ * Security: Link Protection & CSP Enforcement
+ */
+function initSecurity() {
+    // Audit all links for security
+    document.querySelectorAll('a').forEach(link => {
+        const href = (link.getAttribute('href') || '').toLowerCase();
+        const isExternal = href.startsWith('http') && !href.includes(window.location.hostname);
+        const isResume = href.includes('resume');
+
+        // External Link Protection (Prevents Tabnabbing)
+        if (isExternal || isResume) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+
+    // Simple Anti-Iframe protection (prevent clickjacking if not on specific host)
+    if (window.self !== window.top) {
+        window.top.location = window.self.location;
+    }
+}
+
+/**
+ * Email Obfuscation: Prevents bot scraping
+ */
+function initEmailProtection() {
+    const emailLinks = document.querySelectorAll('[data-email-protect]');
+    const emailDisplay = document.getElementById('emailDisplay');
+
+    // Parts of the email to be assembled (security through obscurity)
+    const user = "akashagakash";
+    const domain = "gmail.com";
+
+    emailLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const fullEmail = `${user}@${domain}`;
+
+            if (emailDisplay) {
+                emailDisplay.textContent = fullEmail;
+                emailDisplay.style.display = 'block';
+                emailDisplay.style.opacity = '0';
+                setTimeout(() => {
+                    emailDisplay.style.transition = 'opacity 0.5s ease';
+                    emailDisplay.style.opacity = '1';
+                }, 10);
+            }
+
+            // Optional: copy to clipboard or open mailto
+            // window.location.href = `mailto:${fullEmail}`;
+        });
+    });
+}
 
 /**
  * Subtle Mouse Spotlight Tracker
@@ -44,38 +99,4 @@ function initSpotlight() {
         requestAnimationFrame(update);
     }
     update();
-}
-
-/**
- * Fixes the common email typo site-wide
- */
-function fixEmailTypo() {
-    const target = "akashagakash@gamil.com";
-    const correct = "akashagakash@gmail.com";
-
-    // Find all text nodes or specific IDs
-    const emailDisplay = document.getElementById('emailDisplay');
-    if (emailDisplay && emailDisplay.textContent.includes(target)) {
-        emailDisplay.textContent = emailDisplay.textContent.replace(target, correct);
-    }
-
-    // Also scan all links just in case
-    document.querySelectorAll('a').forEach(link => {
-        if (link.href.includes(target)) {
-            link.href = link.href.replace(target, correct);
-        }
-    });
-}
-
-/**
- * Ensures all Resume links are safe and open in new tab
- */
-function ensureSafeResumeLinks() {
-    document.querySelectorAll('a').forEach(link => {
-        const href = (link.getAttribute('href') || '').toLowerCase();
-        if (href.includes('resume')) {
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener noreferrer');
-        }
-    });
 }

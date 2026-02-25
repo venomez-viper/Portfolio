@@ -40,8 +40,8 @@ function initEmailProtection() {
     const emailDisplay = document.getElementById('emailDisplay');
 
     // Parts of the email to be assembled (security through obscurity)
-    const user = "akashagakash";
-    const domain = "gmail.com";
+    const user = "akashag";
+    const domain = "duck.com";
 
     emailLinks.forEach(link => {
         link.addEventListener('click', (e) => {

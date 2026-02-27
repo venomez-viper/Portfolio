@@ -43,9 +43,17 @@ function initEmailProtection() {
     const user = "akashag";
     const domain = "duck.com";
 
+    let lastClickTime = 0;
+    const COOLDOWN_MS = 10000; // 10 second rate-limit
+
     emailLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
+
+            const now = Date.now();
+            if (now - lastClickTime < COOLDOWN_MS) return; // Rate limit
+            lastClickTime = now;
+
             const fullEmail = `${user}@${domain}`;
 
             if (emailDisplay) {

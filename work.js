@@ -300,6 +300,16 @@ const projects = [
     }
 ];
 
+/* Security Utils */
+function sanitizeInput(str) {
+    // Strip HTML tags and control characters to prevent DOM-based XSS
+    return String(str)
+        .replace(/<[^>]*>/g, '')    // Remove HTML tags
+        .replace(/[\x00-\x1F\x7F]/g, '') // Remove control characters
+        .trim()
+        .slice(0, 200); // Cap to a reasonable length
+}
+
 /* State Logic */
 let currentFilter = 'All';
 let currentSort = 'recent';
@@ -468,7 +478,7 @@ function setupEventListeners() {
 
     // Search
     searchInput.addEventListener('input', (e) => {
-        searchQuery = e.target.value;
+        searchQuery = sanitizeInput(e.target.value);
         toggleClearBtn();
         renderProjects();
     });

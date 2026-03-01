@@ -139,20 +139,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         draw() {
-            if (this.alpha < 0.01) return; // Don't draw if practically invisible
+            if (this.alpha < 0.05) return; // Don't draw if practically invisible
 
             ctx.font = `600 ${this.size}px Outfit, -apple-system, system-ui, sans-serif`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
 
+            // Always use the highlight color, but fade it out based on distance
+            ctx.fillStyle = this.hexToRgba(this.highlightColor, this.alpha);
+
             if (this.alpha > 0.2) {
-                // Highlighted state
-                ctx.fillStyle = this.hexToRgba(this.highlightColor, this.alpha);
+                // Highlighted glowing state
                 ctx.shadowBlur = 15;
                 ctx.shadowColor = this.highlightColor;
             } else {
-                // Base state
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
                 ctx.shadowBlur = 0;
             }
 

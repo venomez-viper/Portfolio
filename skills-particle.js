@@ -84,10 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
             this.vy = (Math.random() - 0.5) * 0.5;
             this.baseSize = Math.random() * 10 + 12; // 12 to 22
             this.size = this.baseSize;
-            this.baseColor = 'rgba(255, 255, 255, 0.15)';
+            this.baseColor = 'rgba(255, 255, 255, 0)';
             this.highlightColor = colors[Math.floor(Math.random() * colors.length)];
-            this.alpha = 0.15;
-            this.targetAlpha = 0.15;
+            this.alpha = 0;
+            this.targetAlpha = 0;
             this.currentColor = this.baseColor;
         }
 
@@ -106,17 +106,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const dy = mouse.y - this.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
 
+            // Particles are hidden by default, and only visible when mouse is close
             if (distance < mouse.radius) {
                 const force = (mouse.radius - distance) / mouse.radius;
-                this.size = this.baseSize + force * 12;
-                this.targetAlpha = 0.9;
+                this.size = this.baseSize + force * 15;
+                // Fade in based on how close the mouse is
+                this.targetAlpha = force * 0.95;
 
                 // Slight repel
                 this.x -= dx * force * 0.02;
                 this.y -= dy * force * 0.02;
             } else {
                 this.size = this.baseSize;
-                this.targetAlpha = 0.15;
+                this.targetAlpha = 0;
             }
 
             // Smooth alpha transition
@@ -124,6 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         draw() {
+            if (this.alpha < 0.01) return; // Don't draw if practically invisible
+
             ctx.font = `600 ${this.size}px Outfit, -apple-system, system-ui, sans-serif`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';

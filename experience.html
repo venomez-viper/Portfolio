@@ -126,9 +126,13 @@
 
         .timeline-date {
             font-family: var(--font-system);
-            color: var(--text-tertiary);
+            color: var(--text-primary);
+            /* Brighter, more visible text */
+            font-weight: 600;
+            /* Adding weight for more visibility */
             margin-bottom: 0.5rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            /* Larger text */
             padding-left: 4rem;
         }
 
@@ -150,10 +154,13 @@
         }
 
         .timeline-content {
-            background: var(--glass-white);
-            backdrop-filter: blur(var(--blur-amount));
-            -webkit-backdrop-filter: blur(var(--blur-amount));
-            border: 1px solid var(--glass-border);
+            background: rgba(20, 20, 25, 0.7);
+            /* Much darker and more opaque */
+            backdrop-filter: blur(40px) saturate(150%);
+            /* Stronger blur */
+            -webkit-backdrop-filter: blur(40px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            /* Stronger border */
             border-radius: 20px;
             padding: 2rem;
             margin-left: 4rem;

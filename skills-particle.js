@@ -53,16 +53,29 @@ document.addEventListener('DOMContentLoaded', () => {
         '#F06292'  // Pink
     ];
 
-    let mouse = { x: -1000, y: -1000, radius: 150 };
+    let mouse = { x: -1000, y: -1000, radius: 120 }; // Tighter radius
+    let isHoveringCard = false;
 
     window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
+        // Prevent particles from showing up behind the main content cards
+        if (e.target.closest('.timeline-content') ||
+            e.target.closest('.hero-glass-panel') ||
+            e.target.closest('.beyond-card') ||
+            e.target.closest('.contact-glass')) {
+            isHoveringCard = true;
+            mouse.x = -1000;
+            mouse.y = -1000;
+        } else {
+            isHoveringCard = false;
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        }
     });
 
     window.addEventListener('mouseout', () => {
         mouse.x = -1000;
         mouse.y = -1000;
+        isHoveringCard = false;
     });
 
     function resize() {

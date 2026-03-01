@@ -6,8 +6,11 @@
     --glass-border: rgba(255, 255, 255, 0.12);
     --glass-highlight: rgba(255, 255, 255, 0.2);
     --text-primary: rgba(255, 255, 255, 0.98);
+    --glass-text-primary: rgba(255, 255, 255, 0.98);
     --text-secondary: rgba(255, 255, 255, 0.7);
+    --glass-text-secondary: rgba(255, 255, 255, 0.7);
     --text-tertiary: rgba(255, 255, 255, 0.4);
+    --glass-text-tertiary: rgba(255, 255, 255, 0.4);
     --accent-blue: rgba(100, 180, 255, 0.9);
     --accent-glow: rgba(100, 180, 255, 0.3);
 

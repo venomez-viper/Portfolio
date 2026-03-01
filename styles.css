@@ -599,6 +599,7 @@ body {
     letter-spacing: -0.04em;
     margin-bottom: var(--spacing-xl);
     text-align: center;
+    color: var(--text-primary);
 }
 
 /* ===== GENERIC CONTENT ===== */

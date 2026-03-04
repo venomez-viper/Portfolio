@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash Anipakalu Giridhar — Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a1a;
+            background: #fff;
+            font-size: 10pt;
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        @page {
+            size: letter;
+            margin: 0.55in 0.65in;
+        }
+
+        .page {
+            max-width: 7.5in;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* ── Header ── */
+        .header {
+            text-align: center;
+            padding-bottom: 14px;
+            border-bottom: 2.5px solid #1a1a1a;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 22pt;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 3px;
+            color: #000;
+        }
+
+        .header .title-line {
+            font-size: 11pt;
+            font-weight: 500;
+            color: #444;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .header .contact-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            font-size: 8.5pt;
+            color: #333;
+        }
+
+        .header .contact-row a {
+            color: #1a6dcc;
+            text-decoration: none;
+        }
+
+        .header .contact-row a:hover {
+            text-decoration: underline;
+        }
+
+        .header .contact-row span.sep {
+            color: #bbb;
+        }
+
+        /* ── Section ── */
+        .section {
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-size: 11pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #000;
+            border-bottom: 1.5px solid #d0d0d0;
+            padding-bottom: 3px;
+            margin-bottom: 8px;
+        }
+
+        /* ── Summary ── */
+        .summary p {
+            font-size: 9.5pt;
+            color: #222;
+            line-height: 1.55;
+        }
+
+        /* ── Experience ── */
+        .exp-entry {
+            margin-bottom: 12px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .exp-role {
+            font-size: 10pt;
+            font-weight: 600;
+            color: #111;
+        }
+
+        .exp-company {
+            font-size: 9.5pt;
+            color: #555;
+            font-style: italic;
+        }
+
+        .exp-dates {
+            font-size: 8.5pt;
+            color: #888;
+            white-space: nowrap;
+        }
+
+        .exp-entry ul {
+            margin: 3px 0 0 18px;
+            padding: 0;
+        }
+
+        .exp-entry li {
+            font-size: 9.5pt;
+            color: #222;
+            margin-bottom: 2px;
+            line-height: 1.45;
+        }
+
+        /* ── Projects ── */
+        .proj-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .proj-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 10px 12px;
+            background: #fafafa;
+        }
+
+        .proj-card h3 {
+            font-size: 10pt;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 3px;
+        }
+
+        .proj-card p {
+            font-size: 8.5pt;
+            color: #444;
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+
+        .proj-card .outcome {
+            font-size: 8pt;
+            color: #1a6dcc;
+            font-weight: 500;
+        }
+
+        .proj-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 4px;
+        }
+
+        .proj-tags span {
+            font-size: 7.5pt;
+            background: #eef3fa;
+            color: #3366aa;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* ── Skills ── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 24px;
+        }
+
+        .skill-group h3 {
+            font-size: 9pt;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 2px;
+        }
+
+        .skill-group p {
+            font-size: 8.5pt;
+            color: #444;
+            line-height: 1.4;
+        }
+
+        /* ── Education, Certs, Awards ── */
+        .edu-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .edu-degree {
+            font-size: 10pt;
+            font-weight: 600;
+            color: #111;
+        }
+
+        .edu-school {
+            font-size: 9pt;
+            color: #555;
+        }
+
+        .edu-detail {
+            font-size: 8.5pt;
+            color: #444;
+            margin-top: 2px;
+        }
+
+        .inline-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .inline-list li {
+            font-size: 9pt;
+            color: #222;
+            margin-bottom: 2px;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .inline-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #888;
+        }
+
+        /* ── Links ── */
+        .links-row {
+            display: flex;
+            gap: 24px;
+            font-size: 9pt;
+        }
+
+        .links-row a {
+            color: #1a6dcc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* ── Page Break Helper ── */
+        .page-break {
+            page-break-before: always;
+        }
+
+        /* ── Print overrides ── */
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .proj-card {
+                background: #fafafa !important;
+                border: 1px solid #ddd !important;
+            }
+
+            .proj-tags span {
+                background: #eef3fa !important;
+            }
+
+            a {
+                color: #1a6dcc !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- ═══════════  HEADER  ═══════════ -->
+        <div class="header">
+            <h1>Akash Anipakalu Giridhar</h1>
+            <div class="title-line">Solutions Engineer &nbsp;|&nbsp; Pre-Sales &nbsp;|&nbsp; SaaS Platforms</div>
+            <div class="contact-row">
+                <span>Chicago, IL</span>
+                <span class="sep">·</span>
+                <a href="https://akashanipakalugiridhar.com">akashanipakalugiridhar.com</a>
+                <span class="sep">·</span>
+                <a href="https://github.com/venomez-viper">github.com/venomez-viper</a>
+                <span class="sep">·</span>
+                <a href="https://linkedin.com/in/akash-anipakalu-giridhar-1089011b1">LinkedIn</a>
+            </div>
+        </div>
+
+        <!-- ═══════════  PROFESSIONAL SUMMARY  ═══════════ -->
+        <div class="section summary">
+            <div class="section-title">Professional Summary</div>
+            <p>
+                Solutions Engineer with hands-on experience in enterprise SaaS pre-sales, technical product
+                demonstrations, and proof-of-concept development. Skilled at translating complex business requirements
+                into solution architectures, building BI dashboards, and driving API integrations across cloud
+                platforms. Proven track record of delivering 200+ BI walkthroughs, 40+ enterprise demos, and 10+ PoCs.
+                Adept at bridging technical and business teams to accelerate deal cycles and drive product adoption.
+            </p>
+        </div>
+
+        <!-- ═══════════  KEY EXPERIENCE  ═══════════ -->
+        <div class="section">
+            <div class="section-title">Key Experience</div>
+
+            <div class="exp-entry">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-role">Solutions Engineer (Pre-Sales)</span>
+                        <span class="exp-company">&nbsp;— LogiNext Solutions</span>
+                    </div>
+                </div>
+                <ul>
+                    <li>Delivered 40+ product demos to enterprise buyers evaluating cloud-based logistics and workflow
+                        orchestration solutions</li>
+                    <li>Conducted technical discovery to translate customer requirements into tailored solution
+                        architectures</li>
+                    <li>Supported 10+ proof-of-concept engagements with product and engineering teams to validate
+                        technical fit</li>
+                    <li>Communicated ROI drivers and value propositions to business stakeholders to accelerate deal
+                        closure</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-role">Solutions Consultant (BI Pre-Sales)</span>
+                        <span class="exp-company">&nbsp;— Zoho Analytics</span>
+                    </div>
+                </div>
+                <ul>
+                    <li>Conducted 200+ technical product walkthroughs across enterprise BI use cases in finance, HR, and
+                        operations</li>
+                    <li>Performed requirements discovery and translated 100+ customer needs into dashboards and KPIs
+                    </li>
+                    <li>Built 50+ solution artifacts demonstrating cloud data integration and analytical capabilities
+                    </li>
+                    <li>Collaborated with sales and engineering to identify and resolve adoption blockers</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-role">Business Analyst Intern</span>
+                    </div>
+                </div>
+                <ul>
+                    <li>Analyzed payroll, scheduling, and operations data to improve accuracy and system efficiency</li>
+                    <li>Built reporting assets to support decision-making across payroll operations workflows</li>
+                </ul>
+            </div>
+
+            <div class="exp-entry">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-role">Student Assistant — Analytics &amp; Operations</span>
+                        <span class="exp-company">&nbsp;— DePaul University</span>
+                    </div>
+                </div>
+                <ul>
+                    <li>Built dashboards using Oracle Cloud ERP data to improve visibility into accounts payable
+                        workflows</li>
+                    <li>Supported invoice validation, approvals, and ERP workflow operations</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ═══════════  FEATURED PROJECTS  ═══════════ -->
+        <div class="section">
+            <div class="section-title">Featured Projects</div>
+            <div class="proj-grid">
+
+                <div class="proj-card">
+                    <h3>BreezeML</h3>
+                    <p>Open-source Python library that simplifies ML workflows with clean API abstractions for common
+                        algorithms.</p>
+                    <div class="proj-tags">
+                        <span>Python</span><span>scikit-learn</span><span>Pandas</span><span>Open Source</span>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <h3>VibeLink Analytics</h3>
+                    <p>ML-driven behavioral analysis for matchmaking platforms — modeled engagement, churn, and match
+                        success.</p>
+                    <div class="outcome">↳ Reduced churn by 12% via behavioral targeting</div>
+                    <div class="proj-tags">
+                        <span>Python</span><span>SQL</span><span>ML Models</span>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <h3>Static BI</h3>
+                    <p>Prompt-driven dashboard generator that converts business questions into instant visual insights.
+                    </p>
+                    <div class="proj-tags">
+                        <span>Python</span><span>BI</span><span>Data Visualization</span>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <h3>SaaS Demo Storytelling</h3>
+                    <p>Master narrative framework for complex B2B software demos, focusing on value selling over feature
+                        dumping.</p>
+                    <div class="outcome">↳ Increased demo-to-close rate by 15%</div>
+                    <div class="proj-tags">
+                        <span>Pre-Sales</span><span>Storytelling</span><span>B2B SaaS</span>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <h3>Carbon-Aware Scheduling (Research)</h3>
+                    <p>Simulation framework evaluating carbon-aware routing policies for multi-region AI inference with
+                        SLO/latency trade-offs.</p>
+                    <div class="outcome">↳ 33,600-request simulation across 5 cloud regions &amp; 3 AI workloads</div>
+                    <div class="proj-tags">
+                        <span>Python</span><span>Cloud</span><span>AI Inference</span><span>Sustainability</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ═══════════  TECHNICAL SKILLS  ═══════════ -->
+        <div class="section">
+            <div class="section-title">Technical Skills</div>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h3>Pre-Sales & Solutions</h3>
+                    <p>Product Demos, PoC Development, Technical Discovery, Solution Architecture, Value Selling, RFP
+                        Responses</p>
+                </div>
+                <div class="skill-group">
+                    <h3>Data & Analytics</h3>
+                    <p>SQL, Python, Pandas, BI Dashboards, KPI Design, Data Modeling, Zoho Analytics, Excel / Google
+                        Sheets</p>
+                </div>
+                <div class="skill-group">
+                    <h3>Cloud & Platforms</h3>
+                    <p>AWS, Azure, Oracle Cloud ERP, SaaS Ecosystems, API Integrations, REST APIs, Git, GitHub</p>
+                </div>
+                <div class="skill-group">
+                    <h3>Tools & Automation</h3>
+                    <p>scikit-learn, LLM Tooling, Workflow Automation, HTML/CSS/JS, Postman, Jira, Confluence</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════  EDUCATION  ═══════════ -->
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="edu-row">
+                <div>
+                    <span class="edu-degree">M.S. Business Analytics</span>
+                    <span class="edu-school">&nbsp;— DePaul University, Chicago &nbsp;|&nbsp; GPA: 3.93</span>
+                </div>
+            </div>
+            <p class="edu-detail">Predictive Analytics · Data Mining · Financial Analytics · SQL · Machine Learning ·
+                Cloud Systems</p>
+            <div style="margin-top: 6px;">
+                <div class="edu-row">
+                    <div>
+                        <span class="edu-degree">B.B.A.</span>
+                        <span class="edu-school">&nbsp;— Business Strategy &amp; Operations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════  AWARDS  ═══════════ -->
+        <div class="section">
+            <div class="section-title">Awards &amp; Honors</div>
+            <ul class="inline-list">
+                <li>Dean's Scholarship ($7,500) — DePaul University</li>
+                <li>Student Ambassador Scholarship ($4,500) — DePaul University</li>
+                <li>Best Presenter Award — Zoho Annual Review</li>
+            </ul>
+        </div>
+
+        <!-- ═══════════  PORTFOLIO LINKS  ═══════════ -->
+        <div class="section">
+            <div class="section-title">Portfolio &amp; Links</div>
+            <div class="links-row">
+                <a href="https://akashanipakalugiridhar.com">🌐 Portfolio Website</a>
+                <a href="https://github.com/venomez-viper">💻 GitHub</a>
+                <a href="https://linkedin.com/in/akash-anipakalu-giridhar-1089011b1">🔗 LinkedIn</a>
+                <a href="https://github.com/venomez-viper/breezeml">📦 BreezeML Repo</a>
+                <a href="https://github.com/venomez-viper/Carbon-Aware-Scheduling-for-Multi-Region-AI-Inference">📄
+                    Carbon-Aware Research</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

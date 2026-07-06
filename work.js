@@ -39,6 +39,45 @@ const projects = [
         ]
     },
     {
+        id: "pathwise",
+        title: "PathWise (Live Product)",
+        summary: "Full-stack career guidance platform: assessment engine, personalized roadmaps, skill gap analysis, and progress tracking. Live at pathwise.fit.",
+        category: "Full-Stack Product",
+        tags: ["React", "TypeScript", "SaaS"],
+        tools: ["React 19", "TypeScript", "Encore.dev", "PostgreSQL", "Vite", "Tailwind", "Framer Motion", "Vercel"],
+        artifacts: {
+            hasDeck: false,
+            hasReport: false,
+            hasCode: true,
+            hasDashboard: true,
+            codeUrl: "https://github.com/venomez-viper/PathWise",
+            dashboardUrl: "https://pathwise.fit"
+        },
+        outcome: "Outcome: Shipped and live - 83-question assessment mapping 30 archetypes to 91 careers",
+        date: "2026-04-28",
+        impactScore: 10,
+        complexityScore: 10,
+        visualScore: 9,
+        role: "Founder, Full-Stack Engineer",
+        problem: "Career guidance is either generic quizzes with canned answers or expensive coaching. Nobody gives users a transparent, personalized, actionable roadmap.",
+        approach: [
+            "Built a career assessment engine: 83 questions across 6 dimensions producing 30 archetypes mapped to 91 career profiles, grounded in RIASEC and Big Five.",
+            "Designed a 4-layer expert scoring system: experience tiers, gap pattern matching, career stage modifiers, and a persona rules engine (Career Changer, Technical Leader...).",
+            "Architected 6 independent Encore.dev microservices (auth, assessment, roadmap, tasks, progress, streaks), each with its own PostgreSQL database.",
+            "Shipped the full product surface: OAuth (Google/Apple with PKCE), kanban task board, pomodoro focus mode, streaks and XP, admin dashboard, GDPR export and deletion."
+        ],
+        results: [
+            "Live in production at pathwise.fit - frontend on Vercel, backend on Encore Cloud.",
+            "Transparent match scoring with cross-dimensional synergy detection and anti-pattern penalties, not black-box recommendations.",
+            "Roadmaps adapt to 3/6/12-month timelines and the user's experience level, with ROI-ranked skill gap recommendations."
+        ],
+        recommendations: [
+            "Try the live assessment at pathwise.fit.",
+            "Read the 4-layer expert system architecture in the repo.",
+            "Next: cohort analytics and coach-facing views."
+        ]
+    },
+    {
         id: "healthcare-fraud",
         title: "Healthcare Fraud Risk Explorer",
         summary: "Ranks Medicare providers by fraud risk from real CMS + OIG LEIE data using peer-relative features on a 6M row provider-year panel.",

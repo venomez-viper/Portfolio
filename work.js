@@ -1,6 +1,268 @@
 /* Data Model */
 const projects = [
     {
+        id: "breezeml",
+        title: "BreezeML (Open Source, PyPI)",
+        summary: "A beginner-friendly, production-aware ML workflow layer. Train, compare, explain, export, and deploy sklearn models without the boilerplate.",
+        category: "Open Source",
+        tags: ["Python", "AutoML", "PyPI"],
+        tools: ["Python", "scikit-learn", "FastAPI", "Docker", "MCP", "GitHub Actions"],
+        artifacts: {
+            hasDeck: false,
+            hasReport: false,
+            hasCode: true,
+            hasDashboard: false,
+            codeUrl: "https://github.com/venomez-viper/breezeml"
+        },
+        outcome: "Outcome: Live on PyPI with a CI-enforced 4-dependency contract",
+        date: "2026-07-06",
+        impactScore: 10,
+        complexityScore: 10,
+        visualScore: 7,
+        role: "Creator & Maintainer",
+        problem: "Low-code ML libraries force a bad trade: PyCaret-style dependency hell or LazyPredict-style toy leaderboards with no pipeline, no deployment, and total lock-in.",
+        approach: [
+            "Layered 'Four Breaths' architecture: a 3-line first model, leaderboards and tuning, then AutoML, deployment, and drift monitoring - each layer optional.",
+            "CI-enforced dependency contract: core imports only sklearn, pandas, numpy, joblib - a test fails the build if anyone adds a fifth.",
+            "Zero lock-in: export() generates a standalone sklearn script; deploy() writes a FastAPI + Docker app serving the raw pipeline.",
+            "Built-in MCP server so AI agents (Claude and others) train, compare, explain, and deploy models with sound statistical defaults."
+        ],
+        results: [
+            "18 classifiers, 16 regressors, 6 clustering algorithms, time-series forecasting with a mandatory naive baseline, and PSI drift monitoring.",
+            "Benchmarked against PyCaret and LazyPredict: 2.2x faster cold import and a leaderboard in 3 lines of user code.",
+            "100+ tests across 5 Python versions; every release gated by CI before auto-publishing to PyPI."
+        ],
+        recommendations: [
+            "pip install breezeml - then breezeml.guide() shows the garden path.",
+            "Read the honest benchmarks (including where competitors win) in the docs.",
+            "Try breezeml.zen() when the models are training."
+        ]
+    },
+    {
+        id: "healthcare-fraud",
+        title: "Healthcare Fraud Risk Explorer",
+        summary: "Ranks Medicare providers by fraud risk from real CMS + OIG LEIE data using peer-relative features on a 6M row provider-year panel.",
+        category: "Machine Learning",
+        tags: ["Python", "Healthcare", "Fraud"],
+        tools: ["Python", "scikit-learn", "BreezeML", "Git LFS", "Pandas"],
+        artifacts: {
+            hasDeck: false,
+            hasReport: false,
+            hasCode: true,
+            hasDashboard: false,
+            codeUrl: "https://github.com/venomez-viper/Healthcare-Fraud-Analytics"
+        },
+        outcome: "Outcome: ROC-AUC 0.809, matching published Part B benchmarks",
+        date: "2026-06-22",
+        impactScore: 9,
+        complexityScore: 9,
+        visualScore: 6,
+        role: "ML Engineer & Researcher",
+        problem: "Medicare fraud investigators face millions of providers and almost no labels: the OIG exclusion list only records fraud that was already caught.",
+        approach: [
+            "Joined CMS Medicare Part B claims (2019-2023) with OIG LEIE exclusions on NPI to build a 6M row labeled provider-year panel.",
+            "Engineered peer-relative features: z-scores, percentiles, and payment-to-service ratios within specialty x year peer groups.",
+            "Framed the problem as Positive-Unlabeled learning, since unlabeled providers are not confirmed clean."
+        ],
+        results: [
+            "Gradient Boosting reached ROC-AUC 0.809, in line with the published academic benchmark range (0.805-0.816).",
+            "The top 10% of the ranked worklist captures roughly 56% of known fraud providers.",
+            "Full pipeline is reproducible from public data: download, build, feature-engineer, train."
+        ],
+        recommendations: [
+            "Treat the ranking as an investigator worklist, not an accusation engine.",
+            "Pursue temporal provider-trajectory modeling over the 5-year panel.",
+            "Extend labels beyond LEIE to reduce positive-unlabeled bias."
+        ]
+    },
+    {
+        id: "apex-ai-exposure",
+        title: "APEX: AI Exposure in SaaS Presales",
+        summary: "Dependency-aware AI exposure model showing which presales tasks augment vs get replaced, at occupation level.",
+        category: "AI Research",
+        tags: ["Research", "AI", "SaaS"],
+        tools: ["Python", "LaTeX", "O*NET", "Task Modeling"],
+        artifacts: {
+            hasDeck: false,
+            hasReport: true,
+            hasCode: true,
+            hasDashboard: false,
+            reportUrl: "https://github.com/venomez-viper/Apex/blob/main/paper/paper.pdf",
+            codeUrl: "https://github.com/venomez-viper/Apex"
+        },
+        outcome: "Outcome: Full research paper with reproducible experiments, prepared to IEEE standards",
+        date: "2026-07-01",
+        impactScore: 8,
+        complexityScore: 9,
+        visualScore: 6,
+        role: "Researcher & Author",
+        problem: "Headline claims about AI replacing sales engineers ignore task structure: some tasks depend on others, and exposure propagates through those dependencies.",
+        approach: [
+            "Decomposed the solutions engineering occupation into task graphs with explicit dependencies.",
+            "Modeled AI exposure per task, then propagated it through the dependency structure instead of averaging naively.",
+            "Separated augmentation potential from replacement risk rather than collapsing them into one score."
+        ],
+        results: [
+            "Produced an occupation-level exposure index that respects task dependencies.",
+            "Showed high-exposure tasks are concentrated in preparation work, while trust-building tasks anchor the role.",
+            "Full paper written in LaTeX with a reproducible analysis pipeline."
+        ],
+        recommendations: [
+            "Presales teams should automate preparation, not conversation.",
+            "Re-score exposure as model capabilities shift.",
+            "Extend the framework to adjacent GTM occupations."
+        ]
+    },
+    {
+        id: "augmentation-replacement-paper",
+        title: "Paper: Augmentation & Replacement in SaaS Sales Engineering",
+        summary: "Research paper measuring which sales engineering tasks AI augments versus replaces, written in LaTeX with a reproducible analysis pipeline.",
+        category: "AI Research",
+        tags: ["Research Paper", "LaTeX", "Future of Work"],
+        tools: ["Python", "LaTeX", "Statistical Analysis"],
+        artifacts: {
+            hasDeck: false,
+            hasReport: true,
+            hasCode: true,
+            hasDashboard: false,
+            reportUrl: "https://github.com/venomez-viper/Augmentation-and-Replacement-in-SaaS-Sales-Engineering/blob/main/Augmentation-and-Replacement-in-SaaS-Sales-Engineering.pdf",
+            codeUrl: "https://github.com/venomez-viper/Augmentation-and-Replacement-in-SaaS-Sales-Engineering"
+        },
+        outcome: "Outcome: Published full paper with charts and open analysis code",
+        date: "2026-03-31",
+        impactScore: 8,
+        complexityScore: 8,
+        visualScore: 7,
+        role: "Author & Researcher",
+        problem: "The debate about AI in presales runs on anecdotes. Nobody had decomposed the actual task structure of SaaS sales engineering to measure augmentation against replacement.",
+        approach: [
+            "Broke the SE role into a task inventory grounded in real presales workflows.",
+            "Scored each task on AI capability overlap, separating augmentation potential from replacement risk.",
+            "Wrote the full paper in LaTeX with every chart generated from open analysis code."
+        ],
+        results: [
+            "Produced a defensible task-level map of AI exposure for the SE occupation.",
+            "Found augmentation dominates in preparation and documentation tasks, while live trust-building resists replacement.",
+            "The paper seeded APEX, the follow-up dependency-aware exposure model."
+        ],
+        recommendations: [
+            "SE leaders should redirect saved preparation time into discovery quality.",
+            "Track exposure longitudinally as model capabilities move.",
+            "Read APEX next for the dependency-aware extension."
+        ]
+    },
+    {
+        id: "gecs-classifier",
+        title: "Industry Classification at Scale (GECS)",
+        summary: "Hierarchical text classifier assigning companies to Morningstar GECS industry codes, evaluated company-disjoint for honest scores.",
+        category: "Machine Learning",
+        tags: ["NLP", "Classification", "Capstone"],
+        tools: ["Python", "scikit-learn", "Linear SVM", "Embeddings"],
+        artifacts: {
+            hasDeck: false,
+            hasReport: false,
+            hasCode: true,
+            hasDashboard: false,
+            codeUrl: "https://github.com/venomez-viper/Classification-Project"
+        },
+        outcome: "Outcome: 75.0% Tier-1 macro F1 with leakage-proof evaluation",
+        date: "2026-06-06",
+        impactScore: 8,
+        complexityScore: 8,
+        visualScore: 5,
+        role: "ML Engineer (Graduate Capstone)",
+        problem: "Assigning companies to a hierarchical industry taxonomy from noisy text descriptions, where naive evaluation leaks the same company across train and test.",
+        approach: [
+            "Built a cascade of classifiers following the taxonomy hierarchy: sector, then group, then leaf code.",
+            "Enforced company-disjoint splits so no firm appears on both sides of the evaluation.",
+            "Compared linear SVMs on TF-IDF against embedding-based models under identical splits."
+        ],
+        results: [
+            "75.0% macro F1 at Tier 1 and 55.44% at Tier 2 - honest, company-disjoint numbers.",
+            "Demonstrated that naive random splits inflate scores substantially, and quantified the gap.",
+            "Delivered a locked, reproducible evaluation protocol for the sponsor."
+        ],
+        recommendations: [
+            "Report company-disjoint metrics as the primary numbers.",
+            "Use taxonomy-aware cascades over flat classification for deep hierarchies.",
+            "Invest in label quality at the ambiguous leaf codes."
+        ]
+    },
+    {
+        id: "carbon-scheduling",
+        title: "Carbon-Aware AI Inference Scheduling",
+        summary: "Simulation framework evaluating carbon-aware scheduling policies and latency trade-offs for multi-region AI inference.",
+        category: "Optimization",
+        tags: ["Sustainability", "Simulation", "Cloud"],
+        tools: ["Python", "Simulation", "Grid Carbon Data"],
+        artifacts: {
+            hasDeck: false,
+            hasReport: false,
+            hasCode: true,
+            hasDashboard: false,
+            codeUrl: "https://github.com/venomez-viper/Carbon-Aware-Scheduling-for-Multi-Region-AI-Inference"
+        },
+        outcome: "Outcome: Quantified carbon-vs-latency frontier for routing policies",
+        date: "2026-05-03",
+        impactScore: 7,
+        complexityScore: 8,
+        visualScore: 6,
+        role: "Systems Researcher",
+        problem: "AI inference can be routed across regions with very different grid carbon intensity, but greener routing costs latency - and nobody quantifies the trade.",
+        approach: [
+            "Built a discrete-event simulation of multi-region inference with real grid carbon intensity profiles.",
+            "Implemented routing policies from latency-only to carbon-first, with blended strategies between.",
+            "Measured the full carbon-vs-latency frontier under realistic load patterns."
+        ],
+        results: [
+            "Showed meaningful carbon reductions are available at modest latency cost under blended policies.",
+            "Identified when carbon-first routing breaks latency SLOs.",
+            "Framework is policy-pluggable for future scheduling research."
+        ],
+        recommendations: [
+            "Adopt blended routing rather than binary green/fast choices.",
+            "Weight carbon decisions by time-of-day grid profiles.",
+            "Extend to training workloads where latency tolerance is higher."
+        ]
+    },
+    {
+        id: "birdsong-3d",
+        title: "Bird Song in 3D",
+        summary: "What does a bird song look like? An interactive 3D visualization where every dot is a real FFT point from actual recordings.",
+        category: "Dashboards",
+        tags: ["WebGL", "Audio", "Data Viz"],
+        tools: ["JavaScript", "Three.js", "FFT", "Web Audio API"],
+        artifacts: {
+            hasDeck: false,
+            hasReport: false,
+            hasCode: true,
+            hasDashboard: false,
+            codeUrl: "https://github.com/venomez-viper/Bird-Song-Visualization-in-3D-"
+        },
+        outcome: "Outcome: Audio made spatial - frequency, time, and amplitude as sculpture",
+        date: "2026-05-02",
+        impactScore: 6,
+        complexityScore: 7,
+        visualScore: 10,
+        role: "Creative Technologist",
+        problem: "Spectrograms are flat and unintuitive for non-experts; the structure of birdsong deserves a form people want to explore.",
+        approach: [
+            "Ran FFT analysis over real bird recordings to extract time-frequency-amplitude points.",
+            "Mapped every FFT point to a particle in 3D space with WebGL rendering.",
+            "Added interactive camera controls so users can walk around a song."
+        ],
+        results: [
+            "Each species produces a visibly distinct 3D signature.",
+            "Runs entirely in the browser with no backend.",
+            "Turned a signal-processing artifact into an approachable piece of generative art."
+        ],
+        recommendations: [
+            "Add more species and side-by-side comparison mode.",
+            "Map amplitude to color for an extra encoding channel.",
+            "Export shareable 3D scenes."
+        ]
+    },
+    {
         id: "vibelink-ml",
         title: "VibeLink Analytics",
         summary: "ML-driven behavior analysis to reduce churn and improve match success rates.",
@@ -10,9 +272,10 @@ const projects = [
         artifacts: {
             hasDeck: false,
             hasReport: true,
-            hasCode: false,
+            hasCode: true,
             hasDashboard: false,
-            reportUrl: "Projects/VibeLink Final Report.pdf"
+            reportUrl: "Projects/VibeLink Final Report.pdf",
+            codeUrl: "https://github.com/venomez-viper/Vibelink-Connections-forged"
         },
         outcome: "Outcome: Reduced churn by 12% via behavioral targeting",
         date: "2025-11-15",
